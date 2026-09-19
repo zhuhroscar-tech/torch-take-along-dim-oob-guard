@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "torch-take-along-dim-oob-guard"
+version = "0.1.0"
+description = "Guards a real torch.take_along_dim(input, indices, dim=X) bug: out-of-bounds indices are silently wrapped modulo the dimension size instead of raising, unlike gather/take/index_select/plain indexing and take_along_dim's own dim=None path (pytorch/pytorch#196106)"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.9"
+authors = [{ name = "zhuhroscar-tech" }]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: MacOS",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest", "pytest-cov", "numpy"]
+torch = ["torch>=2.0", "numpy"]
+
+[project.scripts]
+torch-take-along-dim-oob-guard = "torch_take_along_dim_oob_guard.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
