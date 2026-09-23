@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "torch-take-along-dim-oob-guard"
-version = "0.1.0"
+version = "0.1.1"
 description = "Guards a real torch.take_along_dim(input, indices, dim=X) bug: out-of-bounds indices are silently wrapped modulo the dimension size instead of raising, unlike gather/take/index_select/plain indexing and take_along_dim's own dim=None path (pytorch/pytorch#196106)"
 readme = "README.md"
 license = { text = "MIT" }
